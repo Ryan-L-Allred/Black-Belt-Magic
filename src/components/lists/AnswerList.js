@@ -9,6 +9,8 @@ export const AnswerList = () => {
     const [answers, setAnswers] = useState([])
     const navigate = useNavigate()
 
+    const localBlackBeltUser = localStorage.getItem("black_belt_user")
+    const blackBeltUserObject = JSON.parse(localBlackBeltUser)
     const getAllAnswers = () => {
         fetch(`http://localhost:8088/answers`)
             .then(response => response.json())
@@ -26,8 +28,14 @@ export const AnswerList = () => {
 
 
     return <>
-
-        <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
+        {
+            blackBeltUserObject.instructor
+                ? <>
+                    <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
+                    
+                </>
+                : ""
+        }    
 
         <h2>Answer list</h2>
 
@@ -37,7 +45,14 @@ export const AnswerList = () => {
                     (answer) => {
                         return <>
                             <header>
-                                <Link to={`/answers/${answer.id}/edit`}> Answer {answer.id}</Link>
+                                {
+                                    blackBeltUserObject.instructor
+                                        ? <>
+                                        <Link to={`/answers/${answer.id}/edit`}> Answer {answer.id}</Link>
+                                        </>
+                                        : ""
+                                }
+                                
                             </header>
                             <section>{answer.description}</section>
                             <footer className="answer__footer">
@@ -57,3 +72,5 @@ export const AnswerList = () => {
         </article>
     </>
 }
+
+        
