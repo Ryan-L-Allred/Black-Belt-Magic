@@ -9,17 +9,21 @@ export const QuestionList = () => {
     const [questions, setQuestions] = useState([])
     const navigate = useNavigate()
 
-
+const getAllQuestions = () => {
+        fetch(`http://localhost:8088/questions`)
+            .then(response => response.json())
+            .then((questionArray) => {
+                setQuestions(questionArray)
+            })
+    }
     useEffect(
         () => {
-            fetch(`http://localhost:8088/questions`)
-                .then(response => response.json())
-                .then((questionArray) => {
-                    setQuestions(questionArray)
-                })
+            getAllQuestions()
         },
         []
     )
+
+    
 
     return <>
 
@@ -32,11 +36,20 @@ export const QuestionList = () => {
                 questions.map(
                     (question) => {
                         return <>
-                        <header>
-                            <Link to={`/questions/${question.id}/edit`}> Question {question.id}</Link>
-                        </header>
-                        <section>{question.description}</section>
-                        
+                            <header>
+                                <Link to={`/questions/${question.id}/edit`}> Question {question.id}</Link>
+                            </header>
+                            <section>{question.description}</section>
+                            <footer className="question__footer">
+                                <button onClick={() => {
+                                    fetch(`http://localhost:8088/questions/${question.id}`, {
+                                        method: "DELETE"
+                                    })
+                                        .then(() => {
+                                            getAllQuestions()
+                                        })
+                                }} className="question__delete">Delete Question</button>
+                            </footer>
                         </>
                     }
                 )
