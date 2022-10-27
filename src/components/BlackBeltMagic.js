@@ -3,6 +3,7 @@ import { Authorized } from "./views/Authorized"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { ApplicationViews } from "./views/ApplicationViews"
 import "./BlackBeltMagic.css"
 
 
@@ -15,7 +16,7 @@ export const BlackBeltMagic = () => {
 			<Authorized>
 				<>
 					<NavBar />
-					
+					<ApplicationViews />
 				</>
 			</Authorized>
 
