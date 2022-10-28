@@ -29,7 +29,7 @@ export const AnswerForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/answers")
+                navigate("/questions")
             })
     }
 

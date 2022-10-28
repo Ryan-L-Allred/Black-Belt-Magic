@@ -5,6 +5,11 @@ import { AnswerForm } from "../answers/AnswerForm"
 import { AnswerEdit} from "../answers/AnswerEdit"
 import { MartialArtsList } from "../lists/MartialArtsList"
 
+
+/*
+This component renders the website in a way that
+*/
+
 export const InstructorViews = () => {
     return (
 		<Routes>
@@ -17,7 +22,8 @@ export const InstructorViews = () => {
 				</>
 
 			}>
-				<Route path="questions" element={ <QuestionList />} />
+				
+				<Route path="questions" element={ <QuestionList /> } />
 				<Route path="answers" element={ <AnswerList />} />
 				<Route path="answer/create" element= {<AnswerForm />} />
 				<Route path="answers/:answerId/edit" element={<AnswerEdit />}/>
