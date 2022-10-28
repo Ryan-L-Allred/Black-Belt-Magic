@@ -10,17 +10,17 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/">Homepage</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/questions">Questions</Link>
+                <Link className="navbar__link" to="/questions">Q&A</Link>
             </li>
-            <li className="navbar__item active">
+            {/* <li className="navbar__item active">
                 <Link className="navbar__link" to="/answers">Answers</Link>
-            </li>
+            </li> */}
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/martialarts">List of Martial Arts</Link>
             </li>
-            <li className="navbar__item active">
+            {/* <li className="navbar__item active">
                 <Link className="navbar__link" to="/missionstatement">Our Mission</Link>
-            </li>
+            </li> */}
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
                     localStorage.removeItem("black_belt_user")

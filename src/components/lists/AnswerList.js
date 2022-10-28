@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { QuestionList } from "../lists/QuestionList"
 
 //Here is where the list of questions and answers will be rendered.
 
@@ -29,16 +30,16 @@ export const AnswerList = () => {
 
 
     return <>
-        {
+                
+                
+        <h2>Answer list</h2>
+{
             blackBeltUserObject.instructor
                 ? <>
                     <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
                 </>
                 : ""
-        }        
-                
-        <h2>Answer list</h2>
-
+        }
         <article className="answers">
             {
                 answers.map(
@@ -48,12 +49,11 @@ export const AnswerList = () => {
                                 {
                                     blackBeltUserObject.instructor
                                         ? <>
-                                        <Link to={`/answers/${answer.id}/edit`}> Answer {answer.id}</Link>
+                                        <Link to={`/answers/${answer.id}/edit`}> Answer to question {answer.id}</Link>
                                         </>
-                                        : ""
+                                        : <div>Answer to question {answer.id}</div>
                                 }
-                                
-                            </header>
+                              </header>
                             <section>{answer.description}</section>
                             <footer className="answer__footer">
                                 <button onClick={() => {
@@ -71,7 +71,8 @@ export const AnswerList = () => {
             }
         </article>
     </>
-}
+}   
+                           
 
         
         
