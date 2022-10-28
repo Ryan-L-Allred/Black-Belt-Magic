@@ -18,6 +18,9 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/martialarts">List of Martial Arts</Link>
             </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/missionstatement">Our Mission</Link>
+            </li>
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
                     localStorage.removeItem("black_belt_user")
