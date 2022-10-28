@@ -3,6 +3,7 @@ import { QuestionList } from "../lists/QuestionList"
 import { AnswerList } from "../lists/AnswerList"
 import { AnswerForm } from "../answers/AnswerForm"
 import { AnswerEdit} from "../answers/AnswerEdit"
+import { MartialArtsList } from "../lists/MartialArtsList"
 
 export const InstructorViews = () => {
     return (
@@ -20,6 +21,7 @@ export const InstructorViews = () => {
 				<Route path="answers" element={ <AnswerList />} />
 				<Route path="answer/create" element= {<AnswerForm />} />
 				<Route path="answers/:answerId/edit" element={<AnswerEdit />}/>
+				<Route path="martialArts" element={ <MartialArtsList />} />
 			</Route>
 		</Routes>
 	)
