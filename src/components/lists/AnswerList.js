@@ -11,6 +11,7 @@ export const AnswerList = () => {
 
     const localBlackBeltUser = localStorage.getItem("black_belt_user")
     const blackBeltUserObject = JSON.parse(localBlackBeltUser)
+
     const getAllAnswers = () => {
         fetch(`http://localhost:8088/answers`)
             .then(response => response.json())
@@ -32,11 +33,10 @@ export const AnswerList = () => {
             blackBeltUserObject.instructor
                 ? <>
                     <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
-                    
                 </>
                 : ""
-        }    
-
+        }        
+                
         <h2>Answer list</h2>
 
         <article className="answers">
@@ -73,4 +73,5 @@ export const AnswerList = () => {
     </>
 }
 
+        
         
