@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { AnswerList } from "../lists/AnswerList"
+import { AnswerList } from "../answers/AnswerList"
 
 //Here is where the list of questions will be rendered.
 
 //Create the initial state object, in this case the questions object.
 
 /*
-useState is a react hook. This hook serves as a function that contains an array through destructuring. The array contains and empty array,
+useState is a react hook. This hook serves as a function that contains an array through destructuring. The array contains an empty array,
 in this case "questions". The questions array is the initial state value. setQuestions is a function that is used to change and update state. 
 */
 export const QuestionList = () => {
@@ -23,7 +23,8 @@ export const QuestionList = () => {
     const blackBeltUserObject = JSON.parse(localBlackBeltUser)
 
     /*
-    Stored the fetch call inside of a function so that I could pass it through the useEffect
+    Stored the fetch call inside of a function so that I could pass it through the useEffect,
+    as well as the DELETE fetch call.
     */
 
     const getAllQuestions = () => {
@@ -33,14 +34,19 @@ export const QuestionList = () => {
                 setQuestions(questionArray)
             })
     }
-
-
+    //useEffect watches for state change.
+    //The array is the state that we want to observe.
+    //The function is what we want to do when that observed state changes
     useEffect(
         () => {
             getAllQuestions()
         },
-        [] //and empty dependency wil lwatch for the initial render of the component and only run the callback on that initial run. 
-        //It only runs once.
+        [] //and empty dependency will watch for the initial render of the component and only run the callback on that initial run. It only runs once.
+
+        /*
+           If I were to put the questions array in the dependency array, anytime the value of questions changes, the function will run. 
+           In this case it would make a fetch call every time questions changes.
+       */
     )
 
 
@@ -49,7 +55,7 @@ export const QuestionList = () => {
         {
             blackBeltUserObject.instructor //This makes it to where only a student user can create and edit a question object
                 ?
-                ""
+                <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
                 : <>
                     <button onClick={() => navigate("/question/create")}>Ask an instructor!</button>
                 </>
@@ -67,19 +73,27 @@ export const QuestionList = () => {
                     (question) => {
                         return <section key={question.id}>
                             <header>
-                                
-                                {
-                                    blackBeltUserObject.instructor
-                                        ?
-                                        <div>Question {question.id}</div>
-                                        : <>
-                                            <Link to={`/questions/${question.id}/edit`}> Question {question.id}</Link>
-                                        </>
-                                }
                             </header>
+                            <section>Question {question.id}</section>
                             <section>{question.description}</section>
-                            
+                            { /*
+                                Conditional statement that specifies which user is supposed to have a link that navigates
+                                to the edit page for a question.
+                                */
+                                blackBeltUserObject.instructor
+                                    ?
+                                    ""
+                                    : <>
+                                        <Link to={`/questions/${question.id}/edit`}> Edit question</Link>
+                                    </>
+                            }
                             <footer className="question__footer">
+                                {
+                                    /*
+                                      This fetch call retrieves the specific data that I want to remove from the database.
+                                      Since permanent change is being changed, I need to get the rest of the information.
+                                    */
+                                }
                                 <button onClick={() => {
                                     fetch(`http://localhost:8088/questions/${question.id}`, {
                                         method: "DELETE"
@@ -88,17 +102,23 @@ export const QuestionList = () => {
                                             getAllQuestions()
                                         })
                                 }} className="question__delete">Delete Question</button>
-                            </footer> 
-                         </section>
+                            </footer>
+                        </section>
                     }
                 )
-            } 
-            <section><AnswerList /></section>
+            }
         </article>
+        <AnswerList />
     </>
-}   
-                           
-                        
+}
+
+
+
+
+
+
+
+
 
 
 

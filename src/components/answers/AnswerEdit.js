@@ -5,6 +5,7 @@ export const AnswerEdit = () => {
 
     const [answer, assignAnswer] = useState({
         description: "",
+        questionId: 0
     })
 
     const { answerId } = useParams()
@@ -31,7 +32,7 @@ export const AnswerEdit = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/answers")
+                navigate("/questions")
             })
     }
 
@@ -51,6 +52,20 @@ export const AnswerEdit = () => {
                             (evt) => {
                                 const copy = { ...answer }
                                 copy.description = evt.target.value
+                                assignAnswer(copy)
+                            }
+                        }/>
+                        <label htmlFor="questionId">Question number</label>
+                        <input
+                        required autoFocus
+                        type="number"
+                        className="form-control"
+                        placeholder= "question #?"
+                        value={answer.questionId}
+                        onChange={
+                            (evt) => {
+                                const copy = { ...answer }
+                                copy.questionId = evt.target.value
                                 assignAnswer(copy)
                             }
                         }/>

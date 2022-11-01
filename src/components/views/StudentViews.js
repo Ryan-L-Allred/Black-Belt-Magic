@@ -1,9 +1,11 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { QuestionList } from "../lists/QuestionList"
+import { QuestionList } from "../questions/QuestionList"
 import { QuestionForm } from "../questions/QuestionForm"
 import { QuestionEdit} from "../questions/QuestionEdit"
-import { AnswerList } from "../lists/AnswerList"
-import { MartialArtsList } from "../lists/MartialArtsList"
+import { AnswerList } from "../answers/AnswerList"
+import { MartialArtsList } from "../Martial Arts/MartialArtsList"
+
+//This component renders the website in a way that only a student will see.
 
 export const StudentViews = () => {
     return (
@@ -19,7 +21,7 @@ export const StudentViews = () => {
 			}>
 				<Route path="questions" element={ <QuestionList />} />
 				<Route path="question/create" element= {<QuestionForm />} />
-				<Route path="questions/:questionId/edit" element={<QuestionEdit />}/>
+				<Route path="questions/:questionID/edit" element={<QuestionEdit />}/>
 				<Route path="answers" element={ <AnswerList />} />
 				<Route path="martialArts" element={ <MartialArtsList />} />
 			</Route>
