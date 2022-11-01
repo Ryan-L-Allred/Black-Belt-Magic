@@ -50,7 +50,6 @@ export const QuestionList = () => {
     )
 
 
-
     return <>
         {
             blackBeltUserObject.instructor //This makes it to where only a student user can create and edit a question object
@@ -72,8 +71,6 @@ export const QuestionList = () => {
                 questions.map(
                     (question) => {
                         return <section key={question.id}>
-                            <header>
-                            </header>
                             <section>Question {question.id}</section>
                             <section>{question.description}</section>
                             { /*
@@ -94,14 +91,19 @@ export const QuestionList = () => {
                                       Since permanent change is being changed, I need to get the rest of the information.
                                     */
                                 }
-                                <button onClick={() => {
-                                    fetch(`http://localhost:8088/questions/${question.id}`, {
-                                        method: "DELETE"
-                                    })
-                                        .then(() => {
-                                            getAllQuestions()
-                                        })
-                                }} className="question__delete">Delete Question</button>
+                                {
+                                    blackBeltUserObject.instructor
+                                        ? ""
+                                        : <button onClick={() => {
+                                            fetch(`http://localhost:8088/questions/${question.id}`, {
+                                                method: "DELETE"
+                                            })
+                                                .then(() => {
+                                                    getAllQuestions()
+                                                })
+                                        }} className="question__delete">Delete Question</button>
+                                }
+
                             </footer>
                         </section>
                     }

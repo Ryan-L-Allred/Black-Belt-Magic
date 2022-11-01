@@ -8,6 +8,18 @@ export const AnswerEdit = () => {
         questionId: 0
     })
 
+    const [questionSelect, setQuestionSelect] = useState([])
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/questions`)
+                .then(response => response.json())
+                .then((questionArray) => {
+                    setQuestionSelect(questionArray)
+                })
+        },
+        []
+    )
     const { answerId } = useParams()
 
     const navigate = useNavigate()
@@ -55,20 +67,27 @@ export const AnswerEdit = () => {
                                 assignAnswer(copy)
                             }
                         }/>
-                        <label htmlFor="questionId">Question number</label>
-                        <input
-                        required autoFocus
-                        type="number"
-                        className="form-control"
-                        placeholder= "question #?"
-                        value={answer.questionId}
+                        <div>
+                    <select
+                        className="question-box"
+                        id="question-select"
                         onChange={
                             (evt) => {
                                 const copy = { ...answer }
                                 copy.questionId = evt.target.value
                                 assignAnswer(copy)
-                            }
-                        }/>
+                            }}
+                        >
+                        <option value="0">Select Question</option>
+                        {questionSelect.map((questionObject) => {
+                            return (
+                                <option key={questionObject.id} value={questionObject.id}>
+                                    {questionObject.description}
+                                </option>
+                            )
+                        })}
+                    </select>
+                </div>
                 </div>
             </fieldset>
             <button

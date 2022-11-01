@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 //Create the initial state object, in this case the questions object.
 export const AnswerList = () => {
     const [answers, setAnswers] = useState([])
+
     const navigate = useNavigate()
 
     const localBlackBeltUser = localStorage.getItem("black_belt_user")
@@ -19,9 +20,11 @@ export const AnswerList = () => {
                 setAnswers(answerArray)
             })
     }
+
     useEffect(
         () => {
             getAllAnswers()
+
         },
         []
     )
@@ -43,37 +46,41 @@ export const AnswerList = () => {
             {
                 answers.map(
                     (answer) => {
-                        return <>
-                            <header>
-                                <section>Question: {answer.question.description}</section>
-                                <section>Answer: {answer.description}</section>
+                        return <section key={answer.id}>
+                            <section>Question: {answer?.question?.description}</section>
+                            <section>Answer: {answer.description}</section>
+                            {
+                                blackBeltUserObject.instructor
+                                    ? <>
+                                        <Link to={`/answers/${answer.id}/edit`}>Edit answer</Link>
+                                    </>
+                                    : ""
+                            }
+                            <footer className="answer__footer">
                                 {
                                     blackBeltUserObject.instructor
-                                        ? <>
-                                            <Link to={`/answers/${answer.id}/edit`}>Edit answer</Link>
-                                        </>
+                                        ? <button onClick={() => {
+                                            fetch(`http://localhost:8088/answers/${answer.id}`, {
+                                                method: "DELETE"
+                                            })
+                                                .then(() => {
+                                                    getAllAnswers()
+                                                })
+                                        }} className="answer__delete">Delete Answer</button>
                                         : ""
                                 }
-                            </header>
 
-
-                            <footer className="answer__footer">
-                                <button onClick={() => {
-                                    fetch(`http://localhost:8088/answers/${answer.id}`, {
-                                        method: "DELETE"
-                                    })
-                                        .then(() => {
-                                            getAllAnswers()
-                                        })
-                                }} className="answer__delete">Delete Answer</button>
                             </footer>
-                        </>
+                        </section>
                     }
                 )
             }
         </article>
     </>
 }
+
+
+
 
 
 
