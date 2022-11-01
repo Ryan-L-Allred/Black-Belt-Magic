@@ -7,23 +7,23 @@ export const QuestionEdit = () => {
         description: "",
     })
 
-    const { questionId } = useParams()
+    const { questionID } = useParams()//questionID defined in the route path. This object's name must match the object created in the route path.
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/questions/${questionId}`)
+        fetch(`http://localhost:8088/questions/${questionID}`)
             .then(response => response.json())
             .then((data) => {
                 assignQuestion(data)
             })
-    }, [questionId])
+    }, [questionID])//Any time questionId changes, this fetch call will run. This changes by updating the question.
 
     const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+        event.preventDefault()//This prevents the button from completely refetching the page.
 
         return fetch(`http://localhost:8088/questions/${question.id}`, {
-            method: "PUT",
+            method: "PUT", //The PUT method requests that the target resource create or update its state with the state defined by the representation enclosed in the request
             headers: {
                 "Content-Type": "application/json"
             },
@@ -48,9 +48,9 @@ export const QuestionEdit = () => {
                         placeholder= "example: who am I?"
                         value={question.description}
                         onChange={
-                            (evt) => {
-                                const copy = { ...question }
-                                copy.description = evt.target.value
+                            (evt) => {//This captures the change event
+                                const copy = { ...question } //Create copy of existing state, i.e. the question array
+                                copy.description = evt.target.value //This modifies the new copy. And is whats currently in the input field. We get this through the changeEvent.
                                 assignQuestion(copy)
                             }
                         }/>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { QuestionList } from "../lists/QuestionList"
 
 //Here is where the list of questions and answers will be rendered.
 
@@ -14,7 +13,7 @@ export const AnswerList = () => {
     const blackBeltUserObject = JSON.parse(localBlackBeltUser)
 
     const getAllAnswers = () => {
-        fetch(`http://localhost:8088/answers`)
+        fetch(`http://localhost:8088/answers?_expand=question&_sort=questionId`)
             .then(response => response.json())
             .then((answerArray) => {
                 setAnswers(answerArray)
@@ -30,31 +29,34 @@ export const AnswerList = () => {
 
 
     return <>
-                
-                
+
+
         <h2>Answer list</h2>
-{
+        {/* {
             blackBeltUserObject.instructor
                 ? <>
                     <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
                 </>
                 : ""
-        }
+        } */}
         <article className="answers">
             {
                 answers.map(
                     (answer) => {
                         return <>
                             <header>
+                                <section>Question: {answer.question.description}</section>
+                                <section>Answer: {answer.description}</section>
                                 {
                                     blackBeltUserObject.instructor
                                         ? <>
-                                        <Link to={`/answers/${answer.id}/edit`}> Answer to question {answer.id}</Link>
+                                            <Link to={`/answers/${answer.id}/edit`}>Edit answer</Link>
                                         </>
-                                        : <div>Answer to question {answer.id}</div>
+                                        : ""
                                 }
-                              </header>
-                            <section>{answer.description}</section>
+                            </header>
+
+
                             <footer className="answer__footer">
                                 <button onClick={() => {
                                     fetch(`http://localhost:8088/answers/${answer.id}`, {
@@ -71,8 +73,7 @@ export const AnswerList = () => {
             }
         </article>
     </>
-}   
-                           
+}
 
-        
-        
+
+

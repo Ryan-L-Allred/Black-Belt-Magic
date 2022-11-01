@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+
 
 export const MartialArtsList = () => {
     const [martialArts, setMartialArts] = useState([])
@@ -24,11 +24,18 @@ export const MartialArtsList = () => {
                     (martialArt) => {
                         return <section key={martialArt.id} className="martialArts">
                             <ul>
+                            <img
+                                src={martialArt.imageUrl} 
+                                alt={martialArt.name}
+                                className="martialArt-img"
+                                width="315px" height="192px"
+                                />
                                 <li>Name: {martialArt.name}</li>
                                 <li>Country of Origin: {martialArt.country.name}</li>
                                 <li>Focus: {martialArt.style.name}</li>
                                 <li>Description: {martialArt.description}</li>
                             </ul>
+                            {/* <button>Add to interests</button> */}
                         </section>
                     }
                 )
@@ -37,3 +44,4 @@ export const MartialArtsList = () => {
         </article>
     </>
 }
+                            

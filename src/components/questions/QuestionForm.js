@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 export const QuestionForm = () => {
 
     const [question, update] = useState({
-        description: ""
+        description: "",  
     })
 
     const navigate = useNavigate()
@@ -13,11 +13,11 @@ export const QuestionForm = () => {
     const blackBeltUserObject = JSON.parse(localBlackBeltUser)
 
     const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+        event.preventDefault() //This prevents the button from completely refetching the page.
 
         const questionToSendToAPI = {
             userId: blackBeltUserObject.id,
-            description: question.description
+            description: question.description,
         }
 
         return fetch(`http://localhost:8088/questions`, {
