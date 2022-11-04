@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import "./martialArt.css"
 
 
 export const MartialArtsList = () => {
@@ -22,20 +23,19 @@ export const MartialArtsList = () => {
             {
                 martialArts.map(
                     (martialArt) => {
-                        return <section key={martialArt.id} className="martialArts">
+                        return <section key={martialArt.id} className="martialArtsList">
                             <ul>
                             <img
                                 src={martialArt.imageUrl} 
                                 alt={martialArt.name}
                                 className="martialArt-img"
-                                width="315px" height="192px"
+                                width="300px" height="192px"
                                 />
-                                <li>Name: {martialArt.name}</li>
-                                <li>Country of Origin: {martialArt.country.name}</li>
-                                <li>Focus: {martialArt.style.name}</li>
-                                <li>Description: {martialArt.description}</li>
+                                <b><li>Name: {martialArt.name}</li>
+                                <li><b>Country of Origin:</b> {martialArt.country.name}</li>
+                                <li><b>Focus:</b> {martialArt.style.name}</li>
+                                <li className="descriptions"><b>Description:</b> {martialArt.description}</li></b>
                             </ul>
-                            {/* <button>Add to interests</button> */}
                         </section>
                     }
                 )

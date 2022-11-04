@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "./answers.css"
 
 export const AnswerForm = () => {
 
@@ -52,12 +53,12 @@ export const AnswerForm = () => {
             <h2 className="answerForm__title">A curious student requests your infinite wisdom!</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Answer:</label>
+                    <label htmlFor="description" className="answer"><b>Answer</b></label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="example: who am I?"
+                        placeholder="example: Jackie Chan"
                         value={answer.description}
                         onChange={
                             (evt) => {
@@ -66,23 +67,7 @@ export const AnswerForm = () => {
                                 update(copy)
                             }
                         } />
-                    <label htmlFor="questionId">Question number:</label>
-                    {/* <input
-                        required autoFocus
-                        type="number"
-                        min={0}
-                        max={questionLength.length}
-                        className="form-control"
-                        placeholder= "question #?"
-                        value={answer.questionId}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...answer }
-                                copy.questionId = evt.target.value
-                                update(copy)
-                            }
-                        }>
-                        </input> */}
+                    <label htmlFor="questionId" className="questionSelectBox"><b>Question</b></label>
                 </div>
                 <div>
                     <select
@@ -108,7 +93,7 @@ export const AnswerForm = () => {
             </fieldset>
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
+                className="btn-primary">
                 Submit Answer
             </button>
         </form>

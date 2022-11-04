@@ -58,19 +58,19 @@ export const Register = (props) => {
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for Black Belt Magic</h1>
                 <fieldset>
-                    <label htmlFor="name"> Full Name </label>
+                    <label htmlFor="name"><b>Full Name</b> </label>
                     <input onChange={updateUser}
                            type="text" id="name" className="form-control"
                            placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="email"> Email address </label>
+                    <label htmlFor="email"> <b>Email address</b> </label>
                     <input onChange={updateUser}
                         type="email" id="email" className="form-control"
                         placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <input onChange={(evt) => {
+                    <input className="instructorCheckbox" onChange={(evt) => {
                         const copy = {...user}
                         copy.isInstructor = evt.target.checked
                         setUser(copy)

@@ -26,7 +26,7 @@ fieldset {
 
 .form-control {
     display: block;
-    width: 94%;
+    width: 300px;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -58,4 +58,21 @@ fieldset {
 .button--close {
     position: relative;
     bottom: -2rem;
+}
+
+h1, h2, label {
+    display: flex ;
+    justify-content: center;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instructorCheckbox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
