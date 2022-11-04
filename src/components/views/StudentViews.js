@@ -4,7 +4,7 @@ import { QuestionForm } from "../questions/QuestionForm"
 import { QuestionEdit} from "../questions/QuestionEdit"
 import { AnswerList } from "../answers/AnswerList"
 import { MartialArtsList } from "../Martial Arts/MartialArtsList"
-
+import "./views.css"
 //This component renders the website in a way that only a student will see.
 
 export const StudentViews = () => {
@@ -12,8 +12,8 @@ export const StudentViews = () => {
 		<Routes>
 			<Route path="/" element={
 				<>
-					<h1>Welcome to Black Belt Magic!</h1>
-					<h2>Demystifying martial arts since 2022.</h2>
+					<h1 className="title">Welcome to Black Belt Magic!</h1>
+					<h2 className="subTitle">Demystifying martial arts since 2022.</h2>
 
 					<Outlet />
 				</>

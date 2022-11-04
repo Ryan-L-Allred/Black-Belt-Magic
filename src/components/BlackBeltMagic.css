@@ -10,13 +10,23 @@ textarea {
 }
 
 body {
-    padding: 0 3rem;
+  padding: 0 3rem;
+  background-image: url("images/capstoneBackground.jpg");
+  background-size: cover;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
+  
 }
+
+
 
 p {
   margin-bottom: 1.5em;

@@ -2,11 +2,16 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    
 }
 
 .navbar__item {
+
     flex-basis: 20%;
     list-style-type: none;
+    background-image: url("newBackgroundForLists.jpg");
+    display: flex;
+    justify-content: center;
 }
 
 .navbar__logout {

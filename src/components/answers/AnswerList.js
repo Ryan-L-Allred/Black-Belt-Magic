@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import "./answers.css"
 
 //Here is where the list of questions and answers will be rendered.
 
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 export const AnswerList = () => {
     const [answers, setAnswers] = useState([])
 
-    const navigate = useNavigate()
+    
 
     const localBlackBeltUser = localStorage.getItem("black_belt_user")
     const blackBeltUserObject = JSON.parse(localBlackBeltUser)
@@ -34,28 +34,25 @@ export const AnswerList = () => {
     return <>
 
 
-        <h2>Answer list</h2>
-        {/* {
-            blackBeltUserObject.instructor
-                ? <>
-                    <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
-                </>
-                : ""
-        } */}
+        <h2 className="answerTitle">Answer list</h2>
+        
         <article className="answers">
             {
                 answers.map(
                     (answer) => {
-                        return <section key={answer.id}>
-                            <section>Question: {answer?.question?.description}</section>
-                            <section>Answer: {answer.description}</section>
+                        return <section key={answer.id} className="answerList">
+                            <div>
+                            <section><b>Question:</b> {answer?.question?.description}</section>
+                            <section><b>Answer:</b> {answer.description}</section>
+                            
                             {
                                 blackBeltUserObject.instructor
-                                    ? <>
+                                    ? <div className="editAnswerLink">
                                         <Link to={`/answers/${answer.id}/edit`}>Edit answer</Link>
-                                    </>
+                                    </div>
                                     : ""
                             }
+                            
                             <footer className="answer__footer">
                                 {
                                     blackBeltUserObject.instructor
@@ -71,6 +68,7 @@ export const AnswerList = () => {
                                 }
 
                             </footer>
+                            </div>
                         </section>
                     }
                 )

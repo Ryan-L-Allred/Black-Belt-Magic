@@ -38,7 +38,7 @@ export const QuestionForm = () => {
             <h2 className="questionForm__title">An eager instructor awaits your curiosity!</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Question:</label>
+                    <label htmlFor="description"><b>Question:</b></label>
                     <input
                         required autoFocus
                         type="text"

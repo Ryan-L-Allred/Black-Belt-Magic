@@ -1,0 +1,42 @@
+.questions {
+    background-image: url("newBackgroundForLists.jpg");
+    background-size: cover;
+    width: 300px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.questionTitle {
+    background-image: url("newBackgroundForLists.jpg");
+    background-size: cover;
+    width: 300px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+}
+    
+
+
+.questionList {
+    display: flex;
+    justify-content: center;
+}
+
+.questionNumber {
+    display: flex;
+    justify-content: center;
+}
+
+.answerButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.editQuestionLink {
+    display: flex;
+    justify-content: center;
+}

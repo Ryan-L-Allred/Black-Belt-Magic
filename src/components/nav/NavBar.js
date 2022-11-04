@@ -12,9 +12,6 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/questions">Q&A</Link>
             </li>
-            {/* <li className="navbar__item active">
-                <Link className="navbar__link" to="/answers">Answers</Link>
-            </li> */}
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/martialarts">List of Martial Arts</Link>
             </li>

@@ -4,7 +4,7 @@ import { AnswerList } from "../answers/AnswerList"
 import { AnswerForm } from "../answers/AnswerForm"
 import { AnswerEdit} from "../answers/AnswerEdit"
 import { MartialArtsList } from "../Martial Arts/MartialArtsList"
-
+import "./views.css"
 
 /*
 This component renders the website in a way that
@@ -15,8 +15,8 @@ export const InstructorViews = () => {
 		<Routes>
 			<Route path="/" element={
 				<>
-					<h1>Welcome to Black Belt Magic!</h1>
-					<h1>Demystifying martial arts since 2022.</h1>
+					<h1 className="title">Welcome to Black Belt Magic!</h1>
+					<h2 className="subTitle">Demystifying martial arts since 2022.</h2>
 
 					<Outlet />
 				</>

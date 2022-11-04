@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AnswerList } from "../answers/AnswerList"
+import "./questions.css"
 
 //Here is where the list of questions will be rendered.
 
@@ -54,13 +55,13 @@ export const QuestionList = () => {
         {
             blackBeltUserObject.instructor //This makes it to where only a student user can create and edit a question object
                 ?
-                <button onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
+                <button className="answerButton" onClick={() => navigate("/answer/create")}>Answer a curious future student!</button>
                 : <>
                     <button onClick={() => navigate("/question/create")}>Ask an instructor!</button>
                 </>
         }
 
-        <h2>Question list</h2>
+        <h2 className="questionTitle">Question list</h2>
 
         <article className="questions">
             {
@@ -70,9 +71,11 @@ export const QuestionList = () => {
                 */
                 questions.map(
                     (question) => {
-                        return <section key={question.id}>
-                            <section>Question {question.id}</section>
-                            <section>{question.description}</section>
+                        return <section key={question.id} className="questionList">
+                            <div>
+                                <section className="questionNumber"><b>Question {question.id}:</b></section>
+                                <section>{question.description}</section>
+                            
                             { /*
                                 Conditional statement that specifies which user is supposed to have a link that navigates
                                 to the edit page for a question.
@@ -80,9 +83,9 @@ export const QuestionList = () => {
                                 blackBeltUserObject.instructor
                                     ?
                                     ""
-                                    : <>
+                                    : <div className="editQuestionLink">
                                         <Link to={`/questions/${question.id}/edit`}> Edit question</Link>
-                                    </>
+                                    </div>
                             }
                             <footer className="question__footer">
                                 {
@@ -105,6 +108,7 @@ export const QuestionList = () => {
                                 }
 
                             </footer>
+                            </div>
                         </section>
                     }
                 )
