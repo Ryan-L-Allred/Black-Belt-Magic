@@ -3,7 +3,8 @@ import { QuestionList } from "../questions/QuestionList"
 import { QuestionForm } from "../questions/QuestionForm"
 import { QuestionEdit} from "../questions/QuestionEdit"
 import { AnswerList } from "../answers/AnswerList"
-import { MartialArtsList } from "../Martial Arts/MartialArtsList"
+import { MartialArtContainer } from "../Martial Arts/MartialArtContainer"
+import { MartialArtsInterestList } from "../interests/MartialArtsInterestList"
 import "./views.css"
 //This component renders the website in a way that only a student will see.
 
@@ -23,7 +24,8 @@ export const StudentViews = () => {
 				<Route path="question/create" element= {<QuestionForm />} />
 				<Route path="questions/:questionID/edit" element={<QuestionEdit />}/>
 				<Route path="answers" element={ <AnswerList />} />
-				<Route path="martialArts" element={ <MartialArtsList />} />
+				<Route path="martialArts" element={ <MartialArtContainer />} />
+				<Route path="interests" element={ <MartialArtsInterestList />} />
 			</Route>
 		</Routes>
 	)

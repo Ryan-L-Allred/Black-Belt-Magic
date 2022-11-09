@@ -1,0 +1,15 @@
+.interestList {
+    display:flex;
+    justify-content: center
+}
+
+.name {
+    background-image: url("newBackgroundForLists.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+button {
+    display: block;
+    margin-left: auto;
+}
