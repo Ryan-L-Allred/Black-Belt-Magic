@@ -48,7 +48,7 @@ export const AnswerForm = () => {
             })
     }
 
-    return (
+    return <>
         <form className="answerForm">
             <h2 className="answerForm__title">A curious student requests your infinite wisdom!</h2>
             <fieldset>
@@ -83,7 +83,8 @@ export const AnswerForm = () => {
                         <option value="0">Select Question</option>
                         {questionSelect.map((questionObject) => {
                             return (
-                                <option key={questionObject.id} value={questionObject.id}>
+                                <option key={questionObject.id} 
+                                        value={questionObject.id}>
                                     {questionObject.description}
                                 </option>
                             )
@@ -97,5 +98,5 @@ export const AnswerForm = () => {
                 Submit Answer
             </button>
         </form>
-    )
+    </>
 }
