@@ -23,10 +23,12 @@ A significant lesson I learned was the value of planning everything before getti
 
 ## Installation
 
-Clone the repository to the desired location on your machine. Using the terminal, navigate to the new Black-Belt-Magic directory, install NPM and then serve using the commands:
+1. Clone the repository to the desired location on your machine. Using the terminal, navigate to the new Black-Belt-Magic directory, install NPM and then serve using the commands:
 
-npm install
-npm start 
+2. npm install
+
+3. npm start
+
 This will serve the application at http://localhost:3000/
 
 Secondly you will need to serve the API. The repository is named Black-Belt-Magic-api. Clone it to your machine and then serve using:
