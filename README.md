@@ -34,4 +34,5 @@ This will serve the application at http://localhost:3000/
 Secondly you will need to serve the API. The repository is named Black-Belt-Magic-api. Clone it to your machine and then serve using:
 
 json-server database.json -p 8088
+
 Now navigate to http://localhost:3000/ in your browser and enjoy!
