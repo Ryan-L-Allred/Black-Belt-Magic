@@ -21,3 +21,15 @@ Finding a method to efficiently display the answers with the corresponding quest
 
 A significant lesson I learned was the value of planning everything before getting started and setting up a solid framework for the project before delving in to the details. Because of this, I had no issues with time management and realized my vision exactly the way I wanted it.
 
+## Installation
+
+Clone the repository to the desired location on your machine. Using the terminal, navigate to the new Black-Belt-Magic directory, install NPM and then serve using the commands:
+
+npm install
+npm start 
+This will serve the application at http://localhost:3000/
+
+Secondly you will need to serve the API. The repository is named Black-Belt-Magic-api. Clone it to your machine and then serve using:
+
+json-server database.json -p 8088
+Now navigate to http://localhost:3000/ in your browser and enjoy!
