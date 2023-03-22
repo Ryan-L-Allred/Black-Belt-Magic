@@ -6,3 +6,9 @@ Black Belt Magic is a Q&A forum intended to quell any confusion a prospective or
 
 <a href="https://www.youtube.com/watch?v=3QTmyuyiu-Q">Click here to view demo</a>
 
+## How It's Made:
+**Technologies used:** React.js, Javascript, HTML, CSS, & JSON Server
+
+## Optimizations:
+
+## Lessons Learned:
