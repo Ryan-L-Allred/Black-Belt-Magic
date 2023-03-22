@@ -8,6 +8,7 @@ Black Belt Magic is a Q&A forum intended to quell any confusion a prospective or
 
 ## How It's Made:
 **Technologies used:** React.js, HTML, CSS, & JSON Server
+
 Black Belt Magic is powered entirely by React and CSS and all data is fetched from JSON Server. I began the project by setting up the api through JSON using seed data. I developed the React application with routing components and I also extensively used React hooks including useState, useEffect, useNavigate, and useParams. All of the components were rendered primarily with JSX. 
 
 After the application was completely function with full CRUD, I developed the desired aesthetic and layout for the application with vanilla CSS.
